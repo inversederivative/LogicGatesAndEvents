@@ -1,12 +1,12 @@
 //
-// Created by John on 3/12/2024.
+// Created by John on 3/13/2024.
 //
 #include <AbstractNode.hpp>
 
-#ifndef LOGICGATESANDEVENTS_ANDGATE_HPP
-#define LOGICGATESANDEVENTS_ANDGATE_HPP
+#ifndef LOGICGATESANDEVENTS_ORGATE_HPP
+#define LOGICGATESANDEVENTS_ORGATE_HPP
 
-class AndGate : public AbstractNode
+class OrGate : public AbstractNode
 {
 private:
     AbstractNode* inputX;
@@ -15,8 +15,6 @@ private:
     std::list<IObserver*> connectedNodes_;
 
 public:
-
-    //AndGate();
 
     void SetInputX(AbstractNode* input);
     void SetInputY(AbstractNode* input);
@@ -27,4 +25,4 @@ public:
 
 };
 
-#endif //LOGICGATESANDEVENTS_ANDGATE_HPP
+#endif //LOGICGATESANDEVENTS_ORGATE_HPP

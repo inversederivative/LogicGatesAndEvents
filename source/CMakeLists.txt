@@ -1,6 +1,7 @@
+# Recursively find all .cpp files in the source directory
+file(GLOB_RECURSE SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+
+
 add_executable(${PROJECT_NAME}
-    main.cpp
-    Switch/Switch.cpp
-    LogicGates/AndGate/AndGate.cpp
-    Display/Display.cpp
+    ${SOURCE_FILES}
 )
