@@ -13,6 +13,9 @@ private:
 
 public:
 
+    Switch() = default;
+    explicit Switch(bool state);
+
     void ChangeState(bool state);
     void ToggleState();
     bool GetState() const override;

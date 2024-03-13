@@ -3,6 +3,10 @@
 //
 #include <Switch/Switch.hpp>
 
+Switch::Switch(bool state) {
+    ChangeState(state);
+}
+
 void Switch::ChangeState(bool state) {
     state_ = state;
     Notify();

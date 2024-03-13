@@ -8,6 +8,8 @@ add_executable(LogicGates_Tests
         ../source/LogicGates/AndGate/AndGate.cpp
         ../source/LogicGates/OrGate/OrGate.cpp
         ../source/LogicGates/XorGate/XorGate.cpp
+        ../source/Adders/HalfAdder/HalfAdder.cpp
+        ../source/Adders/FullAdder/FullAdder.cpp
         ../source/Display/Display.cpp
 
         ${SOURCE_FILES}
