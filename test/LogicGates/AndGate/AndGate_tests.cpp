@@ -16,10 +16,10 @@ TEST(AndGate_Tests, TestFalseAndFalse)
     andGate->SetInputX(switchX1);
     andGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(andGate->GetState(), false);
+    EXPECT_EQ(andGate->GetState(), LogicState::OFF);
 }
 
 TEST(AndGate_Tests, TestTrueAndFalse)
@@ -33,10 +33,10 @@ TEST(AndGate_Tests, TestTrueAndFalse)
     andGate->SetInputX(switchX1);
     andGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(andGate->GetState(), false);
+    EXPECT_EQ(andGate->GetState(), LogicState::OFF);
 }
 
 TEST(AndGate_Tests, TestFalseAndTrue)
@@ -50,10 +50,10 @@ TEST(AndGate_Tests, TestFalseAndTrue)
     andGate->SetInputX(switchX1);
     andGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(andGate->GetState(), false);
+    EXPECT_EQ(andGate->GetState(), LogicState::OFF);
 }
 
 TEST(AndGate_Tests, TestTrueAndTrue)
@@ -67,8 +67,8 @@ TEST(AndGate_Tests, TestTrueAndTrue)
     andGate->SetInputX(switchX1);
     andGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(andGate->GetState(), true);
+    EXPECT_EQ(andGate->GetState(), LogicState::ON);
 }

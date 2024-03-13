@@ -6,6 +6,8 @@
 #ifndef LOGICGATESANDEVENTS_ABSTRACTGATE_HPP
 #define LOGICGATESANDEVENTS_ABSTRACTGATE_HPP
 
+
+
 class AbstractNode : public ISubject, public IObserver
 {
 protected:
@@ -25,10 +27,10 @@ public:
         }
     }
 
-    virtual bool GetState() const = 0;
+    virtual LogicState::eLogicState GetState() const = 0;
 
     // IObserver interface methods
-    virtual void Update(bool state) override = 0;
+    virtual void Update(LogicState::eLogicState state) override = 0;
 };
 
 #endif //LOGICGATESANDEVENTS_ABSTRACTGATE_HPP

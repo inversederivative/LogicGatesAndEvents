@@ -16,11 +16,11 @@ TEST(HalfAdder_Tests, TestFalseAndFalse)
     halfAdder->SetInputX(switchX1);
     halfAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(halfAdder->GetState(), false);
-    EXPECT_EQ(halfAdder->GetCarry(), false);
+    EXPECT_EQ(halfAdder->GetState(), LogicState::OFF);
+    EXPECT_EQ(halfAdder->GetCarry(), LogicState::OFF);
 }
 
 TEST(HalfAdder_Tests, TestTrueAndFalse)
@@ -34,11 +34,11 @@ TEST(HalfAdder_Tests, TestTrueAndFalse)
     halfAdder->SetInputX(switchX1);
     halfAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(halfAdder->GetState(), true);
-    EXPECT_EQ(halfAdder->GetCarry(), false);
+    EXPECT_EQ(halfAdder->GetState(), LogicState::ON);
+    EXPECT_EQ(halfAdder->GetCarry(), LogicState::OFF);
 }
 
 TEST(HalfAdder_Tests, TestFalseAndTrue)
@@ -52,11 +52,11 @@ TEST(HalfAdder_Tests, TestFalseAndTrue)
     halfAdder->SetInputX(switchX1);
     halfAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(halfAdder->GetState(), true);
-    EXPECT_EQ(halfAdder->GetCarry(), false);
+    EXPECT_EQ(halfAdder->GetState(), LogicState::ON);
+    EXPECT_EQ(halfAdder->GetCarry(), LogicState::OFF);
 }
 
 TEST(HalfAdder_Tests, TestTrueAndTrue)
@@ -70,9 +70,9 @@ TEST(HalfAdder_Tests, TestTrueAndTrue)
     halfAdder->SetInputX(switchX1);
     halfAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(halfAdder->GetState(), false);
-    EXPECT_EQ(halfAdder->GetCarry(), true);
+    EXPECT_EQ(halfAdder->GetState(), LogicState::OFF);
+    EXPECT_EQ(halfAdder->GetCarry(), LogicState::ON);
 }

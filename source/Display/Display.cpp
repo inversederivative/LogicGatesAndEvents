@@ -9,11 +9,11 @@ void Display::SetInput(AbstractNode *input) {
     Display::Update(input->GetState());
 }
 
-bool Display::GetState() const {
+LogicState::eLogicState Display::GetState() const {
     return state_;
 }
 
-void Display::Update(bool state) {
+void Display::Update(LogicState::eLogicState state) {
     state_ = state;
     Notify();
 }

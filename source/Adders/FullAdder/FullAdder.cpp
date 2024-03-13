@@ -14,7 +14,7 @@ FullAdder::FullAdder()
 
     // Carry in Default behavior is false.
     // If we provide our own carryIn, it will be overwritten.
-    carryIn = new Switch(false);
+    carryIn = new Switch(LogicState::OFF);
     SetCarryIn(carryIn);
 }
 
@@ -52,7 +52,7 @@ void FullAdder::SetCarryIn(AbstractNode *carry) {
 }
 
 
-void FullAdder::Update(bool state) {
+void FullAdder::Update(LogicState::eLogicState state) {
     xorGateA->Update(xorGateA->GetState());
     andGateA->Update(andGateA->GetState());
     xorGateB->SetInputX(xorGateA);
@@ -63,16 +63,16 @@ void FullAdder::Update(bool state) {
     outputCarryState_ = orGate->GetState();
 }
 
-bool FullAdder::GetState() const {
+LogicState::eLogicState FullAdder::GetState() const {
     // Compute the state of the Full Adder based on its inputs
     if (inputX && inputY) {
         return xorGateB->GetState();
     } else {
         // Handle case where inputs are not set
-        return false; // Or some default value depending on your requirements
+        return LogicState::DISABLED; // Or some default value depending on your requirements
     }
 }
 
-bool FullAdder::GetCarryOut() const {
-    return outputCarryState_;
+LogicState::eLogicState FullAdder::GetCarryOut() const {
+    return orGate->GetState();
 }

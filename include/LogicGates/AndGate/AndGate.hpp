@@ -11,7 +11,7 @@ class AndGate : public AbstractNode
 private:
     AbstractNode* inputX;
     AbstractNode* inputY;
-    bool outputState_ = false;
+    LogicState::eLogicState outputState_ = LogicState::DISABLED;
     std::list<IObserver*> connectedNodes_;
 
 public:
@@ -21,9 +21,9 @@ public:
     void SetInputX(AbstractNode* input);
     void SetInputY(AbstractNode* input);
 
-    void Update(bool state) override;
+    void Update(LogicState::eLogicState state) override;
 
-    bool GetState() const override;
+    LogicState::eLogicState GetState() const override;
 
 };
 

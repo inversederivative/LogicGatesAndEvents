@@ -12,15 +12,15 @@ private:
     // Don't need this, because the Display has NO observers!!!
     std::list<IObserver*> connectedNodes_;
     AbstractNode* input_;
-    bool state_ = false;
+    LogicState::eLogicState state_ = LogicState::DISABLED;
 
 public:
 
     void SetInput(AbstractNode* input);
 
-    bool GetState() const override;
+    LogicState::eLogicState GetState() const override;
 
-    void Update(bool state) override;
+    void Update(LogicState::eLogicState state) override;
 
 };
 

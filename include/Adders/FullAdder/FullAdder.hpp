@@ -23,9 +23,9 @@ private:
     AndGate* andGateB;
     OrGate* orGate;
 
-    bool outputSumState_ = false;
-    bool outputCarryState_ = false;
-    bool inputCarryState_ = false;
+    LogicState::eLogicState outputSumState_ = LogicState::DISABLED;
+    LogicState::eLogicState outputCarryState_ = LogicState::DISABLED;
+    LogicState::eLogicState inputCarryState_ = LogicState::OFF;
     std::list<IObserver*> connectedNodes_;
 
 public:
@@ -38,11 +38,11 @@ public:
 
     void SetCarryIn(AbstractNode* carry);
 
-    void Update(bool state) override;
+    void Update(LogicState::eLogicState state) override;
 
-    bool GetState() const override;
+    LogicState::eLogicState GetState() const override;
 
-    bool GetCarryOut() const;
+    LogicState::eLogicState GetCarryOut() const;
 
 };
 

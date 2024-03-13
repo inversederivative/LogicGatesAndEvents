@@ -32,7 +32,7 @@ void HalfAdder::SetInputY(AbstractNode *input) {
     HalfAdder::Update(GetState());
 }
 
-void HalfAdder::Update(bool state) {
+void HalfAdder::Update(LogicState::eLogicState state) {
     // Notify observers of the new output state
 
     // Perhaps we'll need to reimplement the HA logic here
@@ -41,16 +41,16 @@ void HalfAdder::Update(bool state) {
     Notify();
 }
 
-bool HalfAdder::GetState() const {
+LogicState::eLogicState HalfAdder::GetState() const {
     // Compute the state of the Half Adder based on its inputs
     if (inputX && inputY) {
         return xorGate->GetState();
     } else {
         // Handle case where inputs are not set
-        return false; // Or some default value depending on your requirements
+        return LogicState::DISABLED; // Or some default value depending on your requirements
     }
 }
 
-bool HalfAdder::GetCarry() const {
+LogicState::eLogicState HalfAdder::GetCarry() const {
     return outputCarryState_;
 }

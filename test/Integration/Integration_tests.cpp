@@ -34,18 +34,18 @@ TEST(LogicGates_IntegrationTests, IntegrationTest)
 
 
     // 3. Test
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
-    switchX2->ChangeState(true);
-    switchY2->ChangeState(false);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
+    switchX2->ChangeState(LogicState::ON);
+    switchY2->ChangeState(LogicState::OFF);
 
     // Merely setting the switches should trigger the observers to update the states appropriately.
     // Nothing else should be required.
 
-    EXPECT_EQ(display->GetState(), false);
+    EXPECT_EQ(display->GetState(), LogicState::OFF);
 
-    switchY2->ChangeState(true);
+    switchY2->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(display->GetState(), true);
+    EXPECT_EQ(display->GetState(), LogicState::ON);
 
 }

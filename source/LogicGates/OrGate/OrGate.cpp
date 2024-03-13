@@ -17,20 +17,71 @@ void OrGate::SetInputY(AbstractNode *input) {
     OrGate::Update(GetState());
 }
 
-void OrGate::Update(bool state) {
+void OrGate::Update(LogicState::eLogicState state) {
     // Notify observers of the new output state
     outputState_ = state;
     Notify();
 }
 
-bool OrGate::GetState() const {
+LogicState::eLogicState OrGate::GetState() const {
     // Compute the state of the OR gate based on its inputs
     // Note, we're checking that both inputs are NOT null!
-    if (inputX && inputY) {
-        // Here is where we check if the or condition is true or not.
-        return inputX->GetState() || inputY->GetState();
+//    if (inputX && inputY) {
+//        // Here is where we check if the or condition is true or not.
+//        return inputX->GetState() || inputY->GetState();
+//    } else {
+//        // Handle case where inputs are not set
+//        return false; // Or some default value depending on your requirements
+//    }
+
+    // If Both inputs are Disabled
+    LogicState::eLogicState output;
+    if (inputX && inputY)
+    {
+        if (inputX->GetState() == LogicState::DISABLED && inputY->GetState() == LogicState::DISABLED)
+        {
+            output = LogicState::DISABLED;
+            return output;
+        }
+
+        // If one or the other inputs are disabled
+
+        if (inputX->GetState() == LogicState::DISABLED || inputY->GetState() == LogicState::DISABLED)
+        {
+            if (inputX->GetState() == LogicState::ON && inputY->GetState() == LogicState::DISABLED)
+            {
+                output = LogicState::ON;
+                return output;
+            }
+            else if (inputX->GetState() == LogicState::DISABLED && inputY->GetState() == LogicState::ON)
+            {
+                output = LogicState::ON;
+                return output;
+            }
+            else if (inputX->GetState() == LogicState::OFF && inputY->GetState() == LogicState::DISABLED)
+            {
+                output = LogicState::DISABLED;
+                return output;
+            }
+            else if (inputX->GetState() == LogicState::DISABLED && inputY->GetState() == LogicState::OFF)
+            {
+                output = LogicState::DISABLED;
+                return output;
+            }
+        }
+        else {
+            // Neither input contained DISABLED...
+
+            if (inputX->GetState() == LogicState::ON || inputY->GetState() == LogicState::ON) {
+                output = LogicState::ON;
+                return output;
+            } else if (inputX->GetState() == LogicState::OFF && inputY->GetState() == LogicState::OFF) {
+                output = LogicState::OFF;
+                return output;
+            }
+        }
     } else {
-        // Handle case where inputs are not set
-        return false; // Or some default value depending on your requirements
+        std::cout<<"Both Inputs of OrGate weren't populated yet..." << std::endl;
+        return LogicState::DISABLED;
     }
 }

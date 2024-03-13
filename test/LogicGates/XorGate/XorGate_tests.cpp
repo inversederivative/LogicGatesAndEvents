@@ -16,10 +16,10 @@ TEST(XorGate_Tests, TestFalseXorFalse)
     xorGate->SetInputX(switchX1);
     xorGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(xorGate->GetState(), false);
+    EXPECT_EQ(xorGate->GetState(), LogicState::OFF);
 }
 
 TEST(XorGate_Tests, TestTrueXorFalse)
@@ -33,10 +33,10 @@ TEST(XorGate_Tests, TestTrueXorFalse)
     xorGate->SetInputX(switchX1);
     xorGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(xorGate->GetState(), true);
+    EXPECT_EQ(xorGate->GetState(), LogicState::ON);
 }
 
 TEST(XorGate_Tests, TestFalseXorTrue)
@@ -50,10 +50,10 @@ TEST(XorGate_Tests, TestFalseXorTrue)
     xorGate->SetInputX(switchX1);
     xorGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(xorGate->GetState(), true);
+    EXPECT_EQ(xorGate->GetState(), LogicState::ON);
 }
 
 TEST(XorGate_Tests, TestTrueXorTrue)
@@ -67,8 +67,8 @@ TEST(XorGate_Tests, TestTrueXorTrue)
     xorGate->SetInputX(switchX1);
     xorGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(xorGate->GetState(), false);
+    EXPECT_EQ(xorGate->GetState(), LogicState::OFF);
 }

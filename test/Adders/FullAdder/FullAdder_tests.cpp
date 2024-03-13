@@ -16,11 +16,11 @@ TEST(FullAdder_Tests, TestFalseAndFalse)
     fullAdder->SetInputX(switchX1);
     fullAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(fullAdder->GetState(), false);
-    EXPECT_EQ(fullAdder->GetCarryOut(), false);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::OFF);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::OFF);
 }
 
 TEST(FullAdder_Tests, TestTrueAndFalse)
@@ -34,11 +34,11 @@ TEST(FullAdder_Tests, TestTrueAndFalse)
     fullAdder->SetInputX(switchX1);
     fullAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(fullAdder->GetState(), true);
-    EXPECT_EQ(fullAdder->GetCarryOut(), false);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::ON);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::OFF);
 }
 
 TEST(FullAdder_Tests, TestFalseAndTrue)
@@ -52,11 +52,11 @@ TEST(FullAdder_Tests, TestFalseAndTrue)
     fullAdder->SetInputX(switchX1);
     fullAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(fullAdder->GetState(), true);
-    EXPECT_EQ(fullAdder->GetCarryOut(), false);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::ON);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::OFF);
 }
 
 TEST(FullAdder_Tests, TestTrueAndTrue)
@@ -70,11 +70,11 @@ TEST(FullAdder_Tests, TestTrueAndTrue)
     fullAdder->SetInputX(switchX1);
     fullAdder->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(fullAdder->GetState(), false);
-    EXPECT_EQ(fullAdder->GetCarryOut(), true);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::OFF);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::ON);
 }
 
 TEST(FullAdder_Tests, TestFalseAndFalseCarry)
@@ -90,12 +90,12 @@ TEST(FullAdder_Tests, TestFalseAndFalseCarry)
     fullAdder->SetInputY(switchY1);
     fullAdder->SetCarryIn(switchC);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(false);
-    switchC->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::OFF);
+    switchC->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(fullAdder->GetState(), true);
-    EXPECT_EQ(fullAdder->GetCarryOut(), false);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::ON);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::OFF);
 }
 
 TEST(FullAdder_Tests, TestTrueAndFalseCarry)
@@ -111,12 +111,12 @@ TEST(FullAdder_Tests, TestTrueAndFalseCarry)
     fullAdder->SetInputY(switchY1);
     fullAdder->SetCarryIn(switchC);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(false);
-    switchC->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::OFF);
+    switchC->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(fullAdder->GetState(), false);
-    EXPECT_EQ(fullAdder->GetCarryOut(), true);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::OFF);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::ON);
 }
 
 TEST(FullAdder_Tests, TestFalseAndTrueCarry)
@@ -132,12 +132,12 @@ TEST(FullAdder_Tests, TestFalseAndTrueCarry)
     fullAdder->SetInputY(switchY1);
     fullAdder->SetCarryIn(switchC);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(true);
-    switchC->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::ON);
+    switchC->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(fullAdder->GetState(), false);
-    EXPECT_EQ(fullAdder->GetCarryOut(), true);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::OFF);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::ON);
 }
 
 TEST(FullAdder_Tests, TestTrueAndTrueCarry)
@@ -153,10 +153,10 @@ TEST(FullAdder_Tests, TestTrueAndTrueCarry)
     fullAdder->SetInputY(switchY1);
     fullAdder->SetCarryIn(switchC);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
-    switchC->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
+    switchC->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(fullAdder->GetState(), true);
-    EXPECT_EQ(fullAdder->GetCarryOut(), true);
+    EXPECT_EQ(fullAdder->GetState(), LogicState::ON);
+    EXPECT_EQ(fullAdder->GetCarryOut(), LogicState::ON);
 }

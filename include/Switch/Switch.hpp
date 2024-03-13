@@ -9,18 +9,18 @@
 class Switch : public AbstractNode
 {
 private:
-    bool state_ = false;
+    LogicState::eLogicState state_ = LogicState::DISABLED;
 
 public:
 
     Switch() = default;
-    explicit Switch(bool state);
+    explicit Switch(LogicState::eLogicState state);
 
-    void ChangeState(bool state);
+    void ChangeState(LogicState::eLogicState state);
     void ToggleState();
-    bool GetState() const override;
+    LogicState::eLogicState GetState() const override;
 
-    void Update(bool state) override {
+    void Update(LogicState::eLogicState state) override {
         // Do nothing!
         // The switch doesn't have any objects, this is just for show.
     }

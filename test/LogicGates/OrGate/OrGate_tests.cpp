@@ -16,10 +16,10 @@ TEST(OrGate_Tests, TestFalseOrFalse)
     orGate->SetInputX(switchX1);
     orGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(orGate->GetState(), false);
+    EXPECT_EQ(orGate->GetState(), LogicState::OFF);
 }
 
 TEST(OrGate_Tests, TestTrueOrFalse)
@@ -33,10 +33,10 @@ TEST(OrGate_Tests, TestTrueOrFalse)
     orGate->SetInputX(switchX1);
     orGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(false);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::OFF);
 
-    EXPECT_EQ(orGate->GetState(), true);
+    EXPECT_EQ(orGate->GetState(), LogicState::ON);
 }
 
 TEST(OrGate_Tests, TestFalseOrTrue)
@@ -50,10 +50,10 @@ TEST(OrGate_Tests, TestFalseOrTrue)
     orGate->SetInputX(switchX1);
     orGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(false);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::OFF);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(orGate->GetState(), true);
+    EXPECT_EQ(orGate->GetState(), LogicState::ON);
 }
 
 TEST(OrGate_Tests, TestTrueOrTrue)
@@ -67,8 +67,8 @@ TEST(OrGate_Tests, TestTrueOrTrue)
     orGate->SetInputX(switchX1);
     orGate->SetInputY(switchY1);
 
-    switchX1->ChangeState(true);
-    switchY1->ChangeState(true);
+    switchX1->ChangeState(LogicState::ON);
+    switchY1->ChangeState(LogicState::ON);
 
-    EXPECT_EQ(orGate->GetState(), true);
+    EXPECT_EQ(orGate->GetState(), LogicState::ON);
 }

@@ -18,8 +18,8 @@ private:
     XorGate* xorGate;
     AndGate* andGate;
 
-    bool outputSumState_ = false;
-    bool outputCarryState_ = false;
+    LogicState::eLogicState outputSumState_ = LogicState::DISABLED;
+    LogicState::eLogicState outputCarryState_ = LogicState::DISABLED;
     std::list<IObserver*> connectedNodes_;
 
 public:
@@ -29,11 +29,11 @@ public:
     void SetInputX(AbstractNode* input);
     void SetInputY(AbstractNode* input);
 
-    void Update(bool state) override;
+    void Update(LogicState::eLogicState state) override;
 
-    bool GetState() const override;
+    LogicState::eLogicState GetState() const override;
 
-    bool GetCarry() const;
+    LogicState::eLogicState GetCarry() const;
 
 };
 
