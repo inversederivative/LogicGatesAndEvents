@@ -7,6 +7,7 @@ add_executable(LogicGates_Tests
         ../source/Switch/Switch.cpp
         ../source/LogicGates/AndGate/AndGate.cpp
         ../source/LogicGates/OrGate/OrGate.cpp
+        ../source/LogicGates/XorGate/XorGate.cpp
         ../source/Display/Display.cpp
 
         ${SOURCE_FILES}
