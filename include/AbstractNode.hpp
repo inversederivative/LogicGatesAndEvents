@@ -7,7 +7,6 @@
 #define LOGICGATESANDEVENTS_ABSTRACTGATE_HPP
 
 
-
 class AbstractNode : public ISubject, public IObserver
 {
 protected:
@@ -25,6 +24,11 @@ public:
         for (auto observer : observers_) {
             observer->Update(GetState());
         }
+    }
+
+    std::list<IObserver*> GetObserversList()
+    {
+        return observers_;
     }
 
     virtual LogicState::eLogicState GetState() const = 0;

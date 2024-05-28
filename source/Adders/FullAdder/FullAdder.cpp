@@ -12,10 +12,12 @@ FullAdder::FullAdder()
     andGateB = new AndGate();
     orGate = new OrGate();
 
+    carryOutNode = new BufferGate();
+
     // Carry in Default behavior is false.
     // If we provide our own carryIn, it will be overwritten.
-    carryIn = new Switch(LogicState::OFF);
-    SetCarryIn(carryIn);
+    //carryIn = new Switch(LogicState::OFF);
+    //SetCarryIn(carryIn);
 }
 
 void FullAdder::SetInputX(AbstractNode *input) {
@@ -52,6 +54,16 @@ void FullAdder::SetCarryIn(AbstractNode *carry) {
 }
 
 
+AbstractNode *FullAdder::GetCarryOutNode() const {
+    return carryOutNode;
+}
+
+// Note, in the other classes, we first set outputState_ to state. Or something like this.
+// This is because we give GetState() of the current node to that Update function, so it
+// passes the value. However, here we also the rest of the connection logic, which makes
+// things considerably more difficult, especially because we call Update every time we
+// change anything on an Observer (i.e. Notify gets called).
+
 void FullAdder::Update(LogicState::eLogicState state) {
     xorGateA->Update(xorGateA->GetState());
     andGateA->Update(andGateA->GetState());
@@ -61,6 +73,9 @@ void FullAdder::Update(LogicState::eLogicState state) {
     orGate->SetInputY(andGateA);
     outputSumState_ = xorGateB->GetState();
     outputCarryState_ = orGate->GetState();
+    carryOutNode->Update(outputCarryState_);
+
+    Notify();
 }
 
 LogicState::eLogicState FullAdder::GetState() const {

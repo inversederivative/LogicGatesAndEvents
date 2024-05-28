@@ -50,12 +50,12 @@ LogicState::eLogicState OrGate::GetState() const {
         {
             if (inputX->GetState() == LogicState::ON && inputY->GetState() == LogicState::DISABLED)
             {
-                output = LogicState::ON;
+                output = LogicState::DISABLED;
                 return output;
             }
             else if (inputX->GetState() == LogicState::DISABLED && inputY->GetState() == LogicState::ON)
             {
-                output = LogicState::ON;
+                output = LogicState::DISABLED;
                 return output;
             }
             else if (inputX->GetState() == LogicState::OFF && inputY->GetState() == LogicState::DISABLED)

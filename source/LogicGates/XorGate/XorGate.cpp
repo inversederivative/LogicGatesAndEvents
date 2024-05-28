@@ -53,7 +53,7 @@ LogicState::eLogicState XorGate::GetState() const {
                 // Case 3 F,D
             else if (inputX->GetState() == LogicState::OFF && inputY->GetState() == LogicState::DISABLED)
             {
-                output = LogicState::ON;
+                output = LogicState::DISABLED;
                 return output;
             }
                 // Case 4 D,T

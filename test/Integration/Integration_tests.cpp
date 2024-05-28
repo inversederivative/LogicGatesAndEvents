@@ -49,3 +49,18 @@ TEST(LogicGates_IntegrationTests, IntegrationTest)
     EXPECT_EQ(display->GetState(), LogicState::ON);
 
 }
+
+
+TEST(TestingMap, MapTest)
+{
+    AndGate* andGate = new AndGate();
+
+    Display* display = new Display();
+
+    std::unordered_map<AndGate*, Display*> map;
+
+    //map[andGate] = display;
+    map.emplace(andGate, display);
+
+    EXPECT_EQ(map.size(), 1);
+}

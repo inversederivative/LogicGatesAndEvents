@@ -6,6 +6,7 @@
 #include <LogicGates/XorGate/XorGate.hpp>
 #include <LogicGates/AndGate/AndGate.hpp>
 #include <LogicGates/OrGate/OrGate.hpp>
+#include "LogicGates/BufferGate/BufferGate.hpp"
 
 #ifndef LOGICGATESANDEVENTS_FULLADDER_HPP
 #define LOGICGATESANDEVENTS_FULLADDER_HPP
@@ -23,6 +24,8 @@ private:
     AndGate* andGateB;
     OrGate* orGate;
 
+    BufferGate* carryOutNode;
+
     LogicState::eLogicState outputSumState_ = LogicState::DISABLED;
     LogicState::eLogicState outputCarryState_ = LogicState::DISABLED;
     LogicState::eLogicState inputCarryState_ = LogicState::OFF;
@@ -37,6 +40,8 @@ public:
     void SetInputY(AbstractNode* input);
 
     void SetCarryIn(AbstractNode* carry);
+
+    AbstractNode* GetCarryOutNode() const;
 
     void Update(LogicState::eLogicState state) override;
 

@@ -157,3 +157,25 @@ TEST(AndGate_Tests, TestDisabledAndFalse)
 
     EXPECT_EQ(andGate->GetState(), LogicState::OFF);
 }
+
+TEST(AndGate_Tests, TestRemovingNodes)
+{
+    // 1. Setup
+    auto switchX1 = new Switch();
+    auto switchY1 = new Switch();
+
+    auto andGate = new AndGate();
+
+    andGate->SetInputX(switchX1);
+    andGate->SetInputY(switchY1);
+
+    switchX1->ChangeState(LogicState::DISABLED);
+    switchY1->ChangeState(LogicState::OFF);
+
+    EXPECT_EQ(andGate->GetState(), LogicState::OFF);
+
+    andGate->RemoveInputX();
+    int count = switchX1->GetObserversList().size();
+
+    EXPECT_EQ(count, 0);
+}

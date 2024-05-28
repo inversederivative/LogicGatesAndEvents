@@ -4,27 +4,6 @@
 #include <LogicGates/AndGate/AndGate.hpp>
 
 
-
-void AndGate::SetInputX(AbstractNode *input) {
-    inputX = input;
-    input->Attach(this);
-    connectedNodes_.push_back(input);
-    AndGate::Update(GetState());
-}
-
-void AndGate::SetInputY(AbstractNode *input) {
-    inputY = input;
-    input->Attach(this);
-    connectedNodes_.push_back(input);
-    AndGate::Update(GetState());
-}
-
-void AndGate::Update(LogicState::eLogicState state) {
-    // Notify observers of the new output state
-    outputState_ = state;
-    Notify();
-}
-
 // Totally need to redo:
 
 LogicState::eLogicState AndGate::GetState() const {
@@ -61,13 +40,13 @@ LogicState::eLogicState AndGate::GetState() const {
                 // Case 2 D,F
             else if (inputX->GetState() == LogicState::DISABLED && inputY->GetState() == LogicState::OFF)
             {
-                output = LogicState::OFF;
+                output = LogicState::DISABLED;
                 return output;
             }
                 // Case 3 F,D
             else if (inputX->GetState() == LogicState::OFF && inputY->GetState() == LogicState::DISABLED)
             {
-                output = LogicState::OFF;
+                output = LogicState::DISABLED;
                 return output;
             }
                 // Case 4 D,T
@@ -114,7 +93,7 @@ LogicState::eLogicState AndGate::GetState() const {
     }
     else {
         std::cout<< "Both Inputs of AndGate weren't populated yet..." << std::endl;
-        return LogicState::DISABLED;
+        output = LogicState::DISABLED;
+        return output;
     }
-
 }
