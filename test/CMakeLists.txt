@@ -20,6 +20,7 @@ add_executable(LogicGates_Tests
         ../source/Memory/D_FlipFlop.cpp
         ../source/Memory/FourBitFourWordRAM.cpp
         ../source/Memory/EightBit256WordRAM.cpp
+        ../source/CPU/CPU.cpp
 
         ${SOURCE_FILES}
         Integration/MultipleOutputsFromSameNode_Test.cpp
