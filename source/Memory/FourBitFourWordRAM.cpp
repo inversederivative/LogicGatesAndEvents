@@ -37,11 +37,6 @@ FourBitFourWordRAM::FourBitFourWordRAM() {
     memD2 = new D_FlipFlop();
     memD3 = new D_FlipFlop();
 
-    // Initialize TriStateBufferGates
-    data0TriStateBuffer = new TriStateBufferGate();
-    data1TriStateBuffer = new TriStateBufferGate();
-    data2TriStateBuffer = new TriStateBufferGate();
-    data3TriStateBuffer = new TriStateBufferGate();
 }
 
 LogicState::eLogicState FourBitFourWordRAM::GetState() const {
