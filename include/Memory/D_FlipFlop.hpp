@@ -21,16 +21,12 @@ private:
     std::list<IObserver*> connectedNodes_;
 
 
-    LogicState::eLogicState dataInputState_ = LogicState::DISABLED;
-    LogicState::eLogicState enableInputState_ = LogicState::DISABLED;
-    LogicState::eLogicState outputQState_ = LogicState::DISABLED;
-    LogicState::eLogicState outputQBarState_ = LogicState::DISABLED;
+    LogicState::eLogicState dataInputState_;
+    LogicState::eLogicState enableInputState_;
+    LogicState::eLogicState outputQState_;
+    LogicState::eLogicState outputQBarState_;
 
-    NotGate* notGate;
-    AndGate* andGateOne;
-    AndGate* andGateTwo;
-    NorGate* norGateOne;
-    NorGate* norGateTwo;
+    LogicState::eLogicState prevEnableState;
 
 public:
 
@@ -44,7 +40,7 @@ public:
 
     LogicState::eLogicState GetQBarState() const;
 
-
+    void Update(LogicState::eLogicState state) override;
 
 };
 

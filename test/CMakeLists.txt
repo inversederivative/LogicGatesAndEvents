@@ -17,6 +17,8 @@ add_executable(LogicGates_Tests
         ../source/Adders/FourBitAdder/FourBitAdder.cpp
         ../source/LogicGates/BufferGate/BufferGate.cpp
         ../source/Display/Display.cpp
+        ../source/Memory/D_FlipFlop.cpp
+        ../source/Memory/FourBitFourWordRAM.cpp
 
         ${SOURCE_FILES}
         Integration/MultipleOutputsFromSameNode_Test.cpp
