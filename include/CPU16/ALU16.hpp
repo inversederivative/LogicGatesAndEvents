@@ -4,15 +4,15 @@
 #include <AbstractNode.hpp>
 #include <cstdint>
 
-#ifndef LOGICGATESANDEVENTS_ALU_HPP
-#define LOGICGATESANDEVENTS_ALU_HPP
+#ifndef LOGICGATESANDEVENTS_ALU16_HPP
+#define LOGICGATESANDEVENTS_ALU16_HPP
 
 
-class ALU : public AbstractNode {
+class ALU16 : public AbstractNode {
 public:
     enum Operation { ADD, SUB, AND, OR, XOR, NOT };
 
-    void setInputs(uint8_t a, uint8_t b) {
+    void setInputs(uint16_t a, uint16_t b) {
         this->a = a;
         this->b = b;
         Update(LogicState::DISABLED); // Note we don't need any value here.
@@ -51,15 +51,15 @@ public:
         return result ? LogicState::ON : LogicState::OFF;
     }
 
-    uint8_t GetFullState() const
+    uint16_t GetFullState() const
     {
         return result;
     }
 
 private:
-    uint8_t a, b;
-    uint8_t result;
+    uint16_t a, b;
+    uint16_t result;
     Operation op;
 };
 
-#endif //LOGICGATESANDEVENTS_ALU_HPP
+#endif //LOGICGATESANDEVENTS_ALU16_HPP

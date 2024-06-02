@@ -4,13 +4,13 @@
 #include "AbstractNode.hpp"
 #include <cstdint>
 
-#ifndef LOGICGATESANDEVENTS_REGISTER_HPP
-#define LOGICGATESANDEVENTS_REGISTER_HPP
+#ifndef LOGICGATESANDEVENTS_REGISTER16_HPP
+#define LOGICGATESANDEVENTS_REGISTER16_HPP
 
 
-class Register : public AbstractNode {
+class Register16 : public AbstractNode {
 public:
-    void loadValue(uint8_t value) {
+    void loadValue(uint16_t value) {
         state = value;
         AbstractNode::Notify();
     }
@@ -20,7 +20,7 @@ public:
         return state ? LogicState::ON : LogicState::OFF;
     }
 
-    uint8_t GetFullState() const {
+    uint16_t GetFullState() const {
         return state;
     }
 
@@ -29,8 +29,8 @@ public:
     }
 
 private:
-    uint8_t state = 0;
+    uint16_t state = 0;
 };
 
 
-#endif //LOGICGATESANDEVENTS_REGISTER_HPP
+#endif //LOGICGATESANDEVENTS_REGISTER16_HPP

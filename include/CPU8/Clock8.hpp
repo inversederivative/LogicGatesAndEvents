@@ -7,9 +7,9 @@
 #define LOGICGATESANDEVENTS_CLOCK_HPP
 
 
-class Clock : public AbstractNode {
+class Clock8 : public AbstractNode {
 public:
-    Clock(int frequency) : frequency(frequency), state(false) {}
+    Clock8(int frequency) : frequency(frequency), state(false) {}
 
     void tick() {
         state = !state;

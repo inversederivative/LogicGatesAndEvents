@@ -2,9 +2,9 @@
 // Created by John on 6/1/2024.
 //
 #include <AbstractNode.hpp>
-#include <CPU/Clock.hpp>
-#include <CPU/Register.hpp>
-#include <CPU/ALU.hpp>
+#include <CPU8/Clock8.hpp>
+#include <CPU8/Register8.hpp>
+#include <CPU8/ALU8.hpp>
 #include <cstdint>
 #include <memory>
 #include <vector>
@@ -16,13 +16,13 @@
 
 
 
-class CPU {
+class CPU8 {
 public:
-    CPU();
-    void loadInstruction(uint8_t instruction);
+    CPU8();
+    void loadInstruction(uint8_t instruction, uint8_t operand1 = -1, uint8_t operand2 = -1);
     void tickClock();
 
-    std::vector<std::shared_ptr<Register>> GetRegisters() const;
+    std::vector<std::shared_ptr<Register8>> GetRegisters() const;
 
     bool GetZeroFlag() const
     {
@@ -34,7 +34,7 @@ public:
         zeroFlag = zFlag;
     }
 
-    std::shared_ptr<Register> GetProgramCounter() const
+    std::shared_ptr<Register8> GetProgramCounter() const
     {
         return programCounter;
     }
@@ -66,15 +66,17 @@ private:
     void hlt();
 
     uint8_t instruction;
+    uint8_t operand1;
+    uint8_t operand2;
     bool zeroFlag = false; // Example flag, should be set based on operations
     uint8_t returnAddress;
 
-    std::shared_ptr<Clock> clock;
-    std::shared_ptr<Register> programCounter;
-    std::shared_ptr<ALU> alu;
-    std::vector<std::shared_ptr<Register>> registers;
+    std::shared_ptr<Clock8> clock;
+    std::shared_ptr<Register8> programCounter;
+    std::shared_ptr<ALU8> alu;
+    std::vector<std::shared_ptr<Register8>> registers;
 
-    std::map<uint8_t, void (CPU::*)()> opcodeMap;
+    std::map<uint8_t, void (CPU8::*)()> opcodeMap;
 };
 
 #endif //LOGICGATESANDEVENTS_CPU_HPP
